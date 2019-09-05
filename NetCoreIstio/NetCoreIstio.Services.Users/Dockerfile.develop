@@ -1,0 +1,17 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2
+ARG BUILD_CONFIGURATION=Debug
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true
+EXPOSE 80
+
+WORKDIR /src
+COPY ["NetCoreIstio.Services.Users/NetCoreIstio.Services.Users.csproj", "NetCoreIstio.Services.Users/"]
+
+RUN dotnet restore "NetCoreIstio.Services.Users/NetCoreIstio.Services.Users.csproj"
+COPY . .
+WORKDIR "/src/NetCoreIstio.Services.Users"
+RUN dotnet build --no-restore "NetCoreIstio.Services.Users.csproj" -c $BUILD_CONFIGURATION
+
+RUN echo "exec dotnet run --no-build --no-launch-profile -c $BUILD_CONFIGURATION --" > /entrypoint.sh
+
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]

@@ -1,0 +1,120 @@
+###############################################
+## Web Deployment -- Ravi Gadag
+###############################################
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: netcoreistio-web
+  namespace: net-core-samples
+spec:
+  replicas: 1
+  selector:
+      matchLabels:
+        app: netcoreistio-web
+  template:
+    metadata:
+      labels:
+        app: netcoreistio-web
+        version: v1
+    spec:
+      containers:
+      - image: rjgadag/netcore-istio-web:v1
+        # imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
+        name: netcoreistio-web
+        ports:
+        - containerPort: 80
+          name: http
+        env:
+        - name: UsersUrl
+          value: "http://netcoreistio-users-svc:8091"
+        
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: netcoreistio-web-svc
+  namespace: net-core-samples
+spec:
+  selector:
+    app: netcoreistio-web
+  type: LoadBalancer
+  ports:
+  - port: 8090
+    targetPort: 80
+    name: http
+---
+###############################################
+## Users
+###############################################
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: netcoreistio-users
+  namespace: net-core-samples
+spec:
+  replicas: 1
+  selector:
+      matchLabels:
+        app: netcoreistio-users
+  template:
+    metadata:
+      labels:
+        app: netcoreistio-users
+        version: v1
+    spec:
+      containers:
+      - image: rjgadag/netcore-istio-users:v1
+        # imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
+        name: netcoreistio-users
+        ports:
+        - containerPort: 80
+          name: http
+---
+###############################################
+## .Net Core istio users V2
+###############################################
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: netcoreistio-users-v2
+  namespace: net-core-samples
+spec:
+  replicas: 1
+  selector:
+      matchLabels:
+        app: netcoreistio-users
+        version: v2
+  template:
+    metadata:
+      labels:
+        app: netcoreistio-users
+        version: v2
+    spec:
+      containers:
+      - image: rjgadag/netcore-istio-users:v1
+        # imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
+        name: netcoreistio-users
+        ports:
+        - containerPort: 80
+          name: http
+        env:
+        - name: SERVICE_VERSION
+          value: "v2"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: netcoreistio-users-svc
+  namespace: net-core-samples
+spec:
+  selector:
+    app: netcoreistio-users
+  type: LoadBalancer
+  ports:
+  - port: 8091
+    targetPort: 80
+    name: http

@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: netcoreistio-users
+  namespace: net-core-samples
+spec:
+  hosts:
+  - netcoreistio-users-svc
+  http:
+  - route:
+    - destination:
+        host: netcoreistio-users-svc
+        subset: v1
+    timeout: 0.5s

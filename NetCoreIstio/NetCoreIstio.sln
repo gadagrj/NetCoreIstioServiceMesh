@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29201.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreIstio.Services.Users", "NetCoreIstio.Services.Users\NetCoreIstio.Services.Users.csproj", "{7D1C88A4-69DA-46EB-B607-892DA3A4AFDD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeploymentScripts", "DeploymentScripts", "{1584523A-B7E3-4F5F-B8A7-CE2F7BE9DB83}"
+	ProjectSection(SolutionItems) = preProject
+		application.yaml = application.yaml
+		namespace.yaml = namespace.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IstioScripts", "IstioScripts", "{9D9337EA-AD48-45B4-AAAB-0338298957DA}"
+	ProjectSection(SolutionItems) = preProject
+		DestinationRules.yaml = DestinationRules.yaml
+		timeout.yaml = timeout.yaml
+		TrafficRouting.yaml = TrafficRouting.yaml
+		VirtualServices.yaml = VirtualServices.yaml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreIstio.Web", "NetCoreIstio.Web\NetCoreIstio.Web.csproj", "{CB9DCFDA-FB4F-4C13-88C0-FE0BD8BB0EC5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D1C88A4-69DA-46EB-B607-892DA3A4AFDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D1C88A4-69DA-46EB-B607-892DA3A4AFDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D1C88A4-69DA-46EB-B607-892DA3A4AFDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D1C88A4-69DA-46EB-B607-892DA3A4AFDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB9DCFDA-FB4F-4C13-88C0-FE0BD8BB0EC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB9DCFDA-FB4F-4C13-88C0-FE0BD8BB0EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB9DCFDA-FB4F-4C13-88C0-FE0BD8BB0EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB9DCFDA-FB4F-4C13-88C0-FE0BD8BB0EC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A01D1F18-232E-46B1-BD6E-C0DF6A62F360}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  netcoreistio.services.users:
+    image: ${DOCKER_REGISTRY-}netcoreistioservicesusers
+    build:
+      context: .
+      dockerfile: NetCoreIstio.Services.Users/Dockerfile
+
+  netcoreistio.services.users-v2:
+    image: ${DOCKER_REGISTRY-}netcoreistioservicesusersv2
+    build:
+      context: .
+      dockerfile: NetCoreIstio.Services.Users-V2/Dockerfile
+
+
+  netcoreistio.web:
+    image: ${DOCKER_REGISTRY-}netcoreistioweb
+    build:
+      context: .
+      dockerfile: ../NetCoreIstio.Web/Dockerfile
+

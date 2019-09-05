@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model System.Collections.Generic.List<NetCoreIstio.Web.Models.UserViewModel>
+
+
+<main role="main">
+
+   Sample application demonstrating .Net Core, Kuberenetes and Istio, Grafana, Jaeger
+
+    <div>
+        <div class="container">
+
+            <div class="row">
+                @foreach (var product in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">@product.Name</h5>
+                                <p class="card-text">@product.description</p>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+
+</main>
+
