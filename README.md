@@ -19,3 +19,8 @@ Traffic routing : Configured for 80-20% routing to route the service requests to
 
 ![80% - 20% traffic routing for User service](https://i.imgur.com/SpMgZlN.png)
 
+
+and Grafana Monitoring for Microservices 
+![Grafana Monitoring](https://i.imgur.com/WDaZzSd.png)
+
+
